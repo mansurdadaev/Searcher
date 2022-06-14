@@ -1,0 +1,61 @@
+openapi: '3.0.0'
+info:
+  title: searcher
+  description: Поиск и агрегирование данных
+  version: 1.0.0
+  contact:
+    name: "Дадаев Мансур"
+tags:
+  - name: searcher
+
+paths:
+  /serch:
+    get:
+      tags:
+        - search
+      summary: 'Поиск'
+      operationId: search
+      parameters:
+        - in: query
+          name: query
+          description: Искомое слово
+          schema:
+            $ref: '#/components/schemas/QueryWord'
+          required: true
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Domains'
+
+components:
+  responses:
+    200:
+      description: Запрос успешно выполнен
+  schemas:
+    QueryWord:
+      type: array
+      items:
+        $ref: Query
+
+    Query:
+      type: string
+
+    Domains:
+      type: array
+      items:
+        $ref: DomainItem
+
+    DomainItem:
+      type: object
+      description: Домен и частота упоминания
+      properties:
+        domain:
+          type: string
+          description: Наименование
+        frequency:
+          type: integer
+          format: int64
+          description: частота упоминания
