@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Service
+@RequestScope
 public class SearchServiceImpl implements SearchService {
 
 	private final SearchEngine searchEngine;
