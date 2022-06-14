@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+
+  application:
+    name: searcher
+
+search-clients:
+  default-searcher: yandex
+  yandex:
+    url: "http://localhost:8082"
+    user: "some_user"
+    key: "api_key"
+  google:
+    url: "http://localhost:8082"
+    user: "some_user"
+    key: "api_key"
+
+
+
